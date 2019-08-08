@@ -7,7 +7,7 @@ const browsersync = require('browser-sync').create()
 
 const webpack = require('webpack')
 const webpackStream = require('webpack-stream')
-const url = 'http://wootax.test/'
+const url = 'http://sveltesite.test/'
 
 function pack () {
   const mode = process.env.NODE_ENV || 'development'
@@ -57,7 +57,7 @@ function browserSync (done) {
 
 function watchFiles () {
   gulp.watch('./scss/**/*.scss', scss)
-  gulp.watch(['./svelte/dist/svelte.js', './svelte/src/**/*.svelte']).on('change', gulp.series(pack, browsersync.reload))
+  gulp.watch(['./svelte/dist/svelte.js', './svelte/src/**/*.svelte', './svelte/src/**/*.js']).on('change', gulp.series(pack, browsersync.reload))
   gulp.watch(['./**/*.html']).on('change', browsersync.reload)
 }
 
